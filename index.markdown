@@ -1,6 +1,6 @@
 ---
 layout: index
-title: Codeception - BDD测试框架.
+title: Codeception - BDD测试框架。
 ---          
 
 ### Acceptance Test
