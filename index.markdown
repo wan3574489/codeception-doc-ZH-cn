@@ -1,6 +1,6 @@
 ---
 layout: index
-title: Codeception - BDD-style PHP testing.
+title: Codeception - BDD测试框架.
 ---          
 
 ### Acceptance Test
