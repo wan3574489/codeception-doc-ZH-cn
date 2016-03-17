@@ -55,7 +55,7 @@ layout: bootstrap
           <div class="well">
            <h4>API测试</h4>
            <p>
-            通过PHPBrowser或者PHP框架的<b>REST</b>, <b>SOAP</b>, <b>XML-RPC</b>.
+            通过PHPBrowser进行<b>REST</b>, <b>SOAP</b>, <b>XML-RPC</b>的测试.
           </p>
           由PHPUnit驱动的<strong>单元测试(Unit Testing)</strong>.
         </div>
@@ -101,31 +101,37 @@ layout: bootstrap
       <h3>你想问的问题</h3>
     <br>
       <h4>是否我真正的需要用到？</h4>
-      <p>If you develop complex web applications with forms, then you <em>need</em> to use a testing framework. A testing framework allows you to test all links, forms, pages, APIs, and anything else in just minutes using automated test scripts.
+      <p>
+        如果你通过表单开发了一个复杂的web应用程序，那么你 <em>需要</em>使用测试框架。
+        一个测试框架允许你测试所有的链接，表单，页面，API和其它任意的东西，而这些通过自动化测试框架只需要几分钟就能完成。
       </p>
     <br>
       <h4>为什么要用Codeception去替代PHPUnit？</h4>
-      <p>PHPUnit has very limited features for functional testing with
-        <b>Selenium</b> or other backends. Codeception is
-        <b>PHPUnit on steroids</b>. Everything you need for testing is built-in, and 'just works' out of the box. No more pain in configuring Selenium, data cleanup, writing XPaths, or fixtures.
+      <p>PHPUnit 只提供有有限的几种特性去进行功能测试。 Codeception是<b>PHPUnit的加强版</b>。
+      你需要的任何跟测试相关的功能都已经嵌入到系统中，并且马上就能使用。再也不需要为配置Selenium，数据清理，写入Xpaths或者其他特性而感到痛苦。
       </p>
     <br>
 
       <h4>它看起来像Behat</h4>
-      <p>Unlike Behat, Codeception tests are written in PHP. They are flexible and easy to write. You can use
-        <b>variables and operators</b>, <b>CSS and XPath</b> locators in your tests. These features allow you to build a solid test automation platform for testing your web application. Codeception tests are simple and readable for your developers, managers, and QA team.
+      <p>
+        Codeception与Behat 不相似，Codeception测试框架工作在PHP环境中。 它们都很灵活很简单。 
+        在测试代码中，你可以使用<b>变量和操作符</b>，<b>CSS和XPath</b> 进行定位。这些特性允许你为你的web应用程序构建一个可靠的自动化测试平台。 对开发者，管理者和QA团队而言，Codeception编写的测试脚本是简单和高可读性的。
       </p>
 
     <br>
-      <h4>我们已经在用Selenium编辑器了.为什么还要用Codeception?</h4>
-      <p>Codeception works great with Selenium. But with Codeception you can write your tests in PHP.
-        The main reason is: <strong>Selenium IDE tests are tightly bound to XPath locators</strong>.
-        If you ever change anything in the layout, tests will fail. Codeception locators are more stable. You can use names, labels, button names and CSS to match elements on page. It's much easier to support the Codeception test then Selenium's. Codeception can clean data between tests, can check database values, and can generate code coverage reports.
+      <h4>我们已经在用Selenium 工具了.为什么还要用Codeception?</h4>
+      <p>Codeception能与Selenium一起很好的工作。但是使用Codeception你能使用PHP编写你的测试脚本。
+        主要的原因是： <strong>Selenium测试工具依赖于XPath定位</strong>。
+        如果你修改了你的页面布局，测试将会失败。 Codeception 使用多种方式进行定位。你可以使用name，labels，Button的name 和css 去匹配元素。 It's much easier to support the Codeception test then Selenium's. Codeception能够在测试脚本中清理数据，能检查数据表中的值，也能够生成代码覆盖脚本。
       </p>
 
     <br>
-      <h4>Is Codeception a tool for testing legacy projects?</h4>
-      <p>Sure, you can use Codeception for black-box testing of your legacy applications. But in the same manner you can start testing modern web application as well. With modules that integrates with <b>all popular PHP frameworks</b> you can start writing functional tests in seconds. Unit tests? Write them as you do in PHPUnit with some enhancement. Codeception keeps your tests in one place, makes them structured and readable.
+      <h4>能够使用Codeception测试遗留的项目？</h4>
+      <p>当然，你可以使用Codeception对任何遗留的项目进行黑盒测试。
+      但是因为某些规则，测试当代的web应用程序会更好一些。 
+      Codeception已经作为一个模块锲入到<b>所有流行的PHP框架</b>中，你可以几分钟之内开始进行代码测试。
+      单元测试？
+      编写单元测试就像在使用PHPUnit一样。Codeception把你的测试脚本放到某一个地方，确保它们的结构并且可读。
       </p>
     </div>
   </div>
@@ -166,21 +172,20 @@ $I->seeInDatabase('pages', array('title' => 'Hobbit'));
 ?>
 {% endhighlight %}
         </p>
-        <p>This test can be executed inside Mozilla Firefox using Selenium Webdriver,
-          or any browser. You can also execute this test without any browser
-          by using a PHP browser emulator based on CURL.
+        <p>测试脚本被安装了Selenium Webdriver 的火狐浏览器执行，或者其它支持的浏览器。
+        你也可以在基于CURL的PHP浏览环境下执行测试脚本。
         </p>
           <p>
-          <a class="btn btn-default" href="/docs/03-AcceptanceTests"><span class="btn-label">Read more about Acceptance Tests →</span></a>
+          <a class="btn btn-default" href="/docs/03-AcceptanceTests"><span class="btn-label">阅读更多关于验收测试文档 →</span></a>
           </p>
 
           <p>
-            This test can be also executed as a functional test in one of the popular PHP frameworks.
-            Codeception has modules that support <strong>Symfony2</strong>, Zend Framework and Kohana.
+            这些测试在一些流行的PHP框架中作为一个功能测试脚本去执行。
+           Codeception支持<strong>Symfony2</strong>, Zend Framework 和 Kohana.
           </p>
 
           <p>
-          <a class="btn btn-default" href="/docs/04-FunctionalTests"><span class="btn-label">Read more about Functional Tests →</span></a>
+          <a class="btn btn-default" href="/docs/04-FunctionalTests"><span class="btn-label">阅读更多关于功能测试文档 →</span></a>
           </p>
 
             <hr>
@@ -205,11 +210,11 @@ $I->seeResponseContainsJson(array('result' => 'ok'));
 </p>
 
 <p>
-This test can be executed inside PhpBrowser or as a functional test of one of the most popular PHP frameworks.
+这些测试脚本会在PHPBrowser中执行，或者作为一个功能测试脚本在流行的PHP框架中执行。
   </p>
 
   <p>
-        <a class="btn btn-default" href="/docs/10-WebServices"><span class="btn-label">Read more about API Tests →</span></a>
+        <a class="btn btn-default" href="/docs/10-WebServices"><span class="btn-label">阅读更多关于API测试的文档 →</span></a>
   </p>
 <hr>
 
@@ -234,19 +239,21 @@ This test can be executed inside PhpBrowser or as a functional test of one of th
   {% endhighlight %}
   </p>
 <p>
-  PHPUnit test format with some useful helpers.
-  In this test we check that value was saved to database with one simple command 'seeInDatabase'.
+  PHPUnit 测试格式有一些非常有用的帮助脚本。
+ 在这些测试中我们检测通过命令‘seeInDatebase’保存到数据库的值是否正确。
 </p>
-<a class="btn btn-default" href="/docs/05-UnitTests"><span class="btn-label">Read more about Unit Tests →</span></a>
+<a class="btn btn-default" href="/docs/05-UnitTests"><span class="btn-label">阅读更多关于单元测试的文档 →</span></a>
 
 <hr>
 
 <h2>AspectMock</h2>
 <p>
-  A side-project of Codeception for unit testing any PHP code.
+  Codeception的一个额外的项目，主要是为了进行单元测试，测试任意的PHP脚本。
   <a href="https://github.com/Codeception/AspectMock">AspectMock</a>
-  most powerful mocking framework that can stub and mock practically anything. Even static methods,
-  can be tested now. Use it for legacy or untestable code.
+   是一个非常有用的虚拟对象测试框架（mocking framework），它能够虚拟所有实际存在的东西。
+   每一个静态方法都能在现在进行测试。
+   使用它去对遗留的代码和没有测试的代码进行测试吧 。
+ 
 </p>
 
 {% highlight php %}
@@ -264,7 +271,7 @@ $this->assertEquals('davert@mail.ua', $user->getEmail());
 {% endhighlight %}
 
 <a class="btn btn-primary" href="https://github.com/Codeception/AspectMock">
-  Install AspectMock →
+  安装 AspectMock →
 </a>
 
 </div>
