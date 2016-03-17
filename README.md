@@ -1,6 +1,5 @@
-# Codeception Site
+# Codeception 中文网站
 
-http://codeception.com
+http://codeception.cn
 
-If you want to improve the site, please submit your pull requests. Most of design changes are welcome!
-To run site locally (published with Github pages) you need to install [Jekyll](https://jekyllrb.com/)
+网站内容翻译于Codeception官方网站 http://codeception.com 。
