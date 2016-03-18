@@ -1,9 +1,9 @@
 ---
 layout: doc
-title: 01-Introduction - Codeception - Documentation
+title: 01-介绍 - Codeception - 中文文档
 ---
 
-# Introduction
+# 介绍
 
 The idea behind testing is not new. You can't sleep well if you are not confident that your last commit didn't take down the whole application.
 Having your application covered with tests gives you more trust in the stability of your application. That's all.

@@ -136,8 +136,8 @@ layout: bootstrap
     </div>
   </div>
 
-  <div class="col-sm-6 col-lg-6">
-    <h5>Blog</h5>
+  <div class="col-sm-6 col-lg-6" style='font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu; '>
+    <h5>博客</h5>
         <ul class="list-group">
         {% for post in site.posts limit: 3 %}
         <li class="list-group-item">
@@ -190,7 +190,7 @@ $I->seeInDatabase('pages', array('title' => 'Hobbit'));
 
             <hr>
 
-<h3>API Test</h3>
+<h3>API 测试</h3>
 <span class="badge">PhpBrowser</span>
 <span class="badge">REST</span>
 
@@ -218,7 +218,7 @@ $I->seeResponseContainsJson(array('result' => 'ok'));
   </p>
 <hr>
 
-<h3>Unit Test</h3>
+<h3>单元测试</h3>
 <span class="badge">Unit</span>
 <span class="badge">Db</span>
 <p>

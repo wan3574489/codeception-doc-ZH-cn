@@ -1,58 +1,55 @@
 ---
 layout: bootstrap
-title: Quick Start Codeception
+title: Codeception 快速开始中文文档
 ---
 
 <div class="page-header">
-  <h1>Codeception Quickstart Guide</h1>
+  <h1>Codeception 快速开始</h1>
 </div>
-<p class="lead">Codeception PHP Testing Framework is designed to work just out of the box.
-  This means its installation requires minimal steps and no external dependencies
-  preinstalled (except PHP, of course). Only one configuration step should
-  be taken and you are ready to test your web application from an eye of
-  actual user.&nbsp;</p>
+<p class="lead">Codeception是一个马上就能使用的PHP测试框架。它能快速的安装并且不需要其它任何依赖(只需要PHP运行环境)。只需要简单的一个配置步骤你就能马上开始测试你的Web应用程序。
+ &nbsp;</p>
 <div class="row">
   <div class="panel panel-info">      
-      <div class="panel-heading"><h4 class="panel-title">1. Download</h4></div>
+      <div class="panel-heading"><h4 class="panel-title">1. 下载</h4></div>
       <div class="panel-body">
 
       <div class="container">
           <div class="col-sm-6 col-lg-6">
-              <p>Download and save the
-                  <b>phar</b> archive to the root of your web application.&nbsp;</p>
-              <a class="btn btn-lg btn-success" href="/thanks" target="_blank">Download Codeception</a>
+              <p>下载然后保存
+                  <b>phar</b>文件到Web应用程序的根目录。&nbsp;</p>
+              <a class="btn btn-lg btn-success" href="/thanks" target="_blank">下载 Codeception</a>
 
-              <p class="text-muted">Alternatively download it from console</p>
+              <p class="text-muted">或者通过 console 下载</p>
               <div>
                   <pre><code>wget http://codeception.com/codecept.phar</code></pre>
               </div>
           </div>
 
           <div class="col-sm-6 col-lg-6">
-              <p>If you are using PHP 5.4 or PHP 5.5 < 5.5.9.</p>
-              <a class="btn btn-lg btn-success" href="/thanks_php54" target="_blank">Download Codeception</a>
+              <p>如果你使用的是PHP 5.4或者5.5 < 5.5.9</p>
+              <a class="btn btn-lg btn-success" href="/thanks_php54" target="_blank">下载 Codeception</a>
 
-              <p class="text-muted">Alternatively download it from console</p>
+              <p class="text-muted">或者通过 console 下载</p>
               <div>
                   <pre><code>wget http://codeception.com/php54/codecept.phar</code></pre>
               </div>
           </div>
 
           <div class="col-sm-6 col-lg-6">
-          Install via Composer
+          通过 Composer进行安装
 
 <pre><code>php composer.phar require "codeception/codeception:*"</code></pre>          
 
-<p>Use <code>./vendor/bin/codecept</code> instead of codecept.phar in this case.</p>
+<p>在这种情况下使用<code>./vendor/bin/codecept</code> 来替代 codecept.phar .</p>
 
         </div>
 
           <div class="col-sm-6 col-lg-6">
-              Install Globally
+              全局安装
 
               <pre><code>sudo curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept</code></pre>
               <pre><code>sudo chmod a+x /usr/local/bin/codecept</code></pre>
-              <p>Use <code>codecept</code> instead of codecept.phar in this case.</p>
+              <p>使用 <code>codecept</code> 替代 codecept.phar .</p>
 
           </div>
         </div>
@@ -61,36 +58,35 @@ title: Quick Start Codeception
     </div>
   </div>
   <div class="panel panel-info">      
-      <div class="panel-heading"><h4 class="panel-title">2. Install</h4></div>
+      <div class="panel-heading"><h4 class="panel-title">2. 安装</h4></div>
       <div class="panel-body">
-      <p>Open console directory where you saved codecept.phar file and execute:</p>
+      <p>打开命令行工具Cd 到 codecept.phar文件所在目录，然后执行下面的语句:</p>
       <div>
         <p>
           <pre><code>php codecept.phar bootstrap</code></pre>
         </p>
       </div>
-      <p class="text-muted">This creates
-        <b>codeception.yml</b> file and &nbsp;
-        <b>tests</b> directory.</p>
+      <p class="text-muted">系统将会
+        <b>codeception.yml</b>文件  和 &nbsp;
+        <b>tests</b>目录.</p>
     </div>
   </div>
   <div class="panel panel-info">      
-      <div class="panel-heading"><h4 class="panel-title">3. Create Test</h4></div>
+      <div class="panel-heading"><h4 class="panel-title">3.创建测试脚本</h4></div>
       <div class="panel-body">
-      <p>Generate your first acceptance test. Acceptance tests emulate behavior
-        of a real user visiting your site.</p>
+      <p>创建你的第一个验收测试脚本.验收测试脚本模拟一个真实的用户去访问你的网站.</p>
       <div>
         <p>
           <pre><code>php codecept.phar generate:cept acceptance Welcome</code></pre>
         </p>
       </div>
-      <p class="text-muted">Codeception scenario tests are called Cepts.</p>
+      <p class="text-muted">Codeception 所有场景测试都被统称为:Cepts.</p>
     </div>
     </div>
     <div class="panel panel-info">        
-        <div class="panel-heading"><h4 class="panel-title">4. Write Basic Test</h4></div>
+        <div class="panel-heading"><h4 class="panel-title">4. 写一个基础的测试文件</h4></div>
         <div class="panel-body">
-        <p>It's now time to write your first test. Edit the file we've just created
+        <p>现在我们编写你的第一个测试脚本.编辑我们刚刚创建的文件
           <b>tests/acceptance/WelcomeCept.php</b>
         </p>
         <div>
@@ -103,15 +99,15 @@ $I->see('Home');
 ?>{% endhighlight %}
         
         </div>
-        <p class="text-muted">It will check that your frontpage contains the word
-          <b>Home</b> in it.</p>
+        <p class="text-muted">它将会检测你的前端页面是否包含
+          <b>首页</b>这2个文字.</p>
       </div>
     </div>
     <div class="panel panel-info">        
-        <div class="panel-heading"><h4 class="panel-title">5. Configure Acceptance Tests</h4></div>
+        <div class="panel-heading"><h4 class="panel-title">5. 配置验收测试</h4></div>
         <div class="panel-body">
-        <p>Please make sure your local
-          <b>dev server</b>is running. &nbsp;Put application URL into:&nbsp;
+        <p>请确保您本地的
+          <b>开发服务器</b>是正常运行的. &nbsp;把Web应用程序的URL地址加入到下面的文件中:&nbsp;
           <b>tests/acceptance.suite.yml</b>&nbsp;</p>
         <div>
           <pre>
@@ -119,26 +115,24 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: {YOUR APP'S URL}
+            url: {您的网站程序URL地址}
         - \Helper\Acceptance
           </pre>
         </div>
       </div>
     </div>
     <div class="panel panel-info">        
-        <div class="panel-heading"><h4 class="panel-title">6. Run!</h4></div>
+        <div class="panel-heading"><h4 class="panel-title">6. 运行!</h4></div>
         <div class="panel-body">
-        <p>Codeception are executed with 'run' command</p>
+        <p>通过下面的命令运行Codeception</p>
         <div>
           <p>
             <pre><code>php codecept.phar run</code></pre>
           </p>
         </div>
-        <p class="text-muted">This will execute our Welcome test with
-          <b>PhpBrowser</b>. It's PHP script that can check HTML page contents, click
-          links, fill forms, and submit POST and GET requests. For more complex tests
-          that require a browser use Selenium with
-          <b>WebDriver</b> module.</p>
+        <p class="text-muted">它们将会通过
+          <b>PhpBrowser</b>执行我们的Welcome测试脚本.这个PHP测试脚本会检测HTML的内容，点击链接，填充表单然后提交POST或者GET请求.更多更加复杂的测试脚本会依赖于<b>WebDriver</b>模块.
+          </p>
       </div>
 </div>
 </div>
@@ -148,8 +142,7 @@ modules:
   <div class="col-sm-8 col-lg-8">
 
   <div class="panel panel-success">
-  <div class="panel-heading">If you did everything right and your app has "Home" text on frontpage you
-      will see this in output</div>
+  <div class="panel-heading">如果你把上面的操作都成功做了一遍，并且您的应用程序前端页面有"首页"这2个字,您将会看到下面输出的内容:</div>
   <div class="panel-body">
       <pre><code>Suite acceptance started 
 Trying to <b>ensure that frontpage works</b> (WelcomeCept.php) - Ok
@@ -164,13 +157,11 @@ Time: 1 second, Memory: 21.00Mb
 
 
   <div class="col-sm-4 col-lg-4">
-    <p>Follow the Acceptance Testing chapter to learn how to test your
-      web application by clicking links, filling forms, as your regular users
-      do.</p>
+    <p>通过学习 验收测试章节 您将会学习到如何模拟一个真实的用户去对您的网站进行点击链接, 填充表单这样的操作.</p>
     <div class="list-group">
-        <a class="list-group-item" href="/docs/02-GettingStarted">A Complete Getting Started Guide</a>
-        <a class="list-group-item active" href="/docs/03-AcceptanceTests">Continue with Acceptance Tests</a>
-        <a class="list-group-item" href="/docs/01-Introduction">The difference &nbsp;between Acceptance Tests and Unit Tests</a>
+        <a class="list-group-item" href="/docs/02-GettingStarted">完整的快速开始中文手册</a>
+        <a class="list-group-item active" href="/docs/03-AcceptanceTests">继续学习验收测试</a>
+        <a class="list-group-item" href="/docs/01-Introduction">验收测试与单元测试的不同</a>
     </div>
   </div>
 </div>
