@@ -1,17 +1,17 @@
 ---
 layout: doc
-title: 02-GettingStarted - Codeception - Documentation
+title: 02-入门指南 - Codeception - 中文文档
 ---
 
-# Getting Started
+# 入门指南
 
-Let's take a look at Codeception's architecture. We assume that you already [installed](http://codeception.com/install) it, and bootstrapped your first test suites. Codeception has generated three of them: unit, functional, and acceptance. They are well described in the previous chapter. Inside your __/tests__ folder you will have three config files and three directories with names corresponding to these suites. Suites are independent groups of tests with a common purpose. 
+让我们先看一下Codeception的架构设计。 我们假定你已经[安装](http://codeception.com/install) 完了Codeception， 并且引导成功了你的第一个测试功能组件。 Codeception 生成了三个功能组件： 单元测试组件(unit)、功能测试组件(functional)、和验收测试组件(acceptance)。 我们已经在前面的章节中对它们进行了详细的描述。 现在在你的 /tests 目录中存在三个配置文件和三个目录，目录的名称与三个功能组件的名称一致(译者注：这里的名称一致，指英文名称一致)，它们都是测试中常见并且相互独立的功能。
 
-## Actors
+## 表演者对象(Actors)
 
-One of the main concepts of Codeception is representation of tests as actions of a person. We have a UnitTester, who executes functions and tests the code. We also have a FunctionalTester, a qualified tester, who tests the application as a whole, with knowledge of its internals. And an AcceptanceTester, a user that works with our application through an interface that we provide.
+Codeception 中每一个主要概念都代表着测试人员的一个测试行为。 我们有单元测试人员，他们执行函数并且测试这个函数。 我们也有功能测试人员， 一个合格的功能测试人员， 将会根据已知的程序内部结构测试整个应用程序。我们还有验收测试人员，他们通过开发者提供的接口或者页面测试我们的应用程序。
 
-Actor classes are not written but generated from suite configuration. **Methods of actor classes are generally taken from Codeception Modules**. Each module provides predefined actions for different testing purposes, and they can be combined to fit the testing environment. Codeception tries to solve 90% of possible testing issues in its modules, so you don't have reinvent the wheel. We think that you can spend more time on writing tests and less on writing support code to make those tests run. By default AcceptanceTester relies on PhpBrowser module, which is set in `tests/acceptance.suite.yml` configuration file:
+Actor Classes 是通过suite配置生成的。 **他们的方法通常都来自于Codeception的模块**。每一个模块为不同的测试目标提供了预先设定的动作(action)，把它们组合起来就能够适应不同的测试环境。Codeception 的每一个模块都解决了至少90%的测试问题，所以你并不需要做重复的工作。我们认为你能预算更多的时间在写测试代码上，预算更少的时间去保证测试代码正常运行。一般情况下，验收测试人员依赖于PhpBrowser 模块，我们可以在 tests/acceptance.suite.yum文件中对PhpBrowser模块进行配置：
 
 {% highlight yaml %}
 
@@ -24,8 +24,8 @@ modules:
 
 {% endhighlight %}
 
-In this configuration file you can enable/disable and reconfigure modules for your needs.
-When you change configuration, actor classes are rebuilt automatically. If Actor classes are not created or updated as you expect, try to generate them manually with `build` command:
+在这个配置文件中你可以  开启/关闭 或者重新配置模块。
+当你修改了配置后，actor 类 将会自动的更新。如果 Actor classes 没有跟你期望的那样创建或更新，你需要调用`build` 命令来重新生成：
 
 {% highlight bash %}
 
@@ -34,13 +34,13 @@ $ php codecept.phar build
 {% endhighlight %}
 
 
-## Writing a Sample Scenario
+## 写一个简单的测试脚本
 
-By default tests are written as narrative scenarios. To make a PHP file a valid scenario, its name should have a `Cept` suffix. 
+默认的测试用例都被写在叙述性的场景下。一个php文件要成为一个有效的测试脚本文件，那它的文件名字必须是有`Cept`后缀。
 
-Let's say, we created a file `tests/acceptance/SigninCept.php`
+比如说，我们创建了一个文件 `tests/acceptance/SigninCept.php`
 
-We can do that by running the following command:
+我们可以通过以下的命令去运行它们：
 
 {% highlight bash %}
 
@@ -48,7 +48,7 @@ $ php codecept.phar generate:cept acceptance Signin
 
 {% endhighlight %}
 
-A Scenario always starts with Actor class initialization. After that, writing a scenario is just like typing `$I->` and choosing a proper action from the auto-completion list.
+一个测试脚本将会伴随Actor class的初始化而开始。之后，在编辑器中键入  $I->  这样的的代码，然后从自动弹出列表中选择一个特有的动作函数，类似于下面的代码(这一段话其实可以理解成为把下面的代码写到php文件里面去)：
 
 {% highlight php %}
 
@@ -58,8 +58,7 @@ $I = new AcceptanceTester($scenario);
 
 {% endhighlight %}
 
-Let's log in to our website. We assume that we have a 'login' page where we are getting authenticated by providing a username and password. Then we are sent to a user page, where we see the text `Hello, %username%`. Let's look at how this scenario is written in Codeception.
-
+现在就让我们登录到我们的网站中去。 首先，我们假定我们拥有一个通过用户名和密码就能完成授权登录的 '登录' 的页面。当我们登录成功后，我们将会在文件中看到文字：Hello，%用户名称%。现在让我们看看在Codeception中如何去写这样的测试脚本：
 {% highlight php %}
 
 <?php
@@ -74,7 +73,7 @@ $I->see('Hello, davert');
 
 {% endhighlight %}
 
-Before we execute this test, we should make sure that the website is running on a local web server. Let's open the `tests/acceptance.suite.yml` file and replace the URL with the URL of your web application:
+在我们运行代码之前，我们要确定网站是正常运行在服务器上面的。 然后我们打开 `tests/acceptance.suite.yml` 文件 把url替换为你的网站程序的URL地址：
 
 {% highlight yaml %}
 
@@ -87,7 +86,7 @@ modules:
 
 {% endhighlight %}
 
-After we configured the URL we can run this test with the `run` command:
+之后，我们在命令行工具中运行下面的代码：
 
 {% highlight bash %}
 
@@ -95,7 +94,7 @@ $ php codecept.phar run
 
 {% endhighlight %}
 
-Here is the output we should see:
+我们将会看到以下信息：
 
 {% highlight bash %}
 
@@ -115,7 +114,7 @@ OK (1 test, 1 assertions)
 
 {% endhighlight %}
 
-Let's get a detailed output:
+获取详细的信息可以运行以下的命令：
 
 {% highlight bash %}
 
@@ -123,7 +122,7 @@ $ php codecept.phar run acceptance --steps
 
 {% endhighlight %}
 
-We should see a step-by-step report on the performed actions.
+我们将会看到详细的运行情况报表。
 
 {% highlight bash %}
 
@@ -144,14 +143,13 @@ OK (1 test, 1 assertions)
 
 {% endhighlight %}
 
-This simple test can be extended to a complete scenario of site usage. 
-So by emulating the user's actions you can test any of your websites.
+这个简单的测试能被扩展成为一个完整的测试脚本。现在我们就能模拟用户去测试你的网站。
 
-Give it a try!
+试一下吧，少年!
 
-## Bootstrap
+## 引导器(Bootstrap)
 
-Each suite has its own bootstrap file. It's located in the suite directory and is named `_bootstrap.php`. It will be executed before test suite. There is also a global bootstrap file located in the `tests` directory. It can be used to include additional files.
+每一个组件都有它们自己的引导器文件。 It's located in the suite directory and is named `_bootstrap.php`. It will be executed before test suite. There is also a global bootstrap file located in the `tests` directory. It can be used to include additional files.
 
 ## Cept, Cest and Test Formats
 
