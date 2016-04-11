@@ -149,13 +149,13 @@ OK (1 test, 1 assertions)
 
 ## 引导器(Bootstrap)
 
-每一个组件都有它们自己的引导器文件。 It's located in the suite directory and is named `_bootstrap.php`. It will be executed before test suite. There is also a global bootstrap file located in the `tests` directory. It can be used to include additional files.
+每一个组件都有它们自己的引导器文件。 它处在组件目录内，文件名为 `_bootstrap.php`。 它在测试组件运行之前运行。同时也有一个公共的引导文件在 'tests' 目录，它一般被用于加载额外的文件。
 
-## Cept, Cest and Test Formats
+## Cept， Cest 和 测试格式(Test Formats)
 
-Codeception supports three test formats. Beside the previously described scenario-based Cept format, Codeception can also execute [PHPUnit test files for unit testing](http://codeception.com/docs/05-UnitTests), and Cest format.
+Codeception支持三种测试格式。 包括有刚刚详细描述过的`基于场景`的Cept格式， Codeception也能执行[PHPUnit](http://codeception.com/docs/05-UnitTests)的单元测试脚本文件, 还支持Cest格式.
 
-Cest combines scenario-driven test approach with OOP design. In case you want to group a few testing scenarios into one you should consider using Cest format. In the example below we are testing CRUD actions within a single file but with a several test (one per each operation):
+`Cest组合场景驱动`测试建议以OOP思想进行设计。 万一你想要组合几种场景去进行测试你应该考虑使用Cest 格式。在下面的例子中，我们在一个文件中测试几个CRUD 动作：:
 
 {% highlight php %}
 
@@ -192,7 +192,7 @@ class PageCrudCest
 
 {% endhighlight %}
 
-Such Cest file can be created by running a generator:
+这些Cest 文件可以通过运行下面的代码生成：
 
 {% highlight bash %}
 
@@ -200,15 +200,15 @@ $ php codecept.phar generate:cest acceptance PageCrud
 
 {% endhighlight %}
 
-Learn more about [Cest format](http://codeception.com/docs/07-AdvancedUsage#Cest-Classes) in Advanced Testing section.
+在`高级测试`部分学习更多关于[Cest 格式](http://codeception.com/docs/07-AdvancedUsage#Cest-Classes)的知识。
 
-## Configuration
+## 配置
 
-Codeception has a global configuration in `codeception.yml` and a config for each suite. We also support `.dist` configuration files. If you have several developers in a project, put shared settings into `codeception.dist.yml` and personal settings into `codeception.yml`. The same goes for suite configs. For example, the `unit.suite.yml` will be merged with `unit.suite.dist.yml`. 
+Codeception 拥有一个全局的配置文件在 `codeception.yml`，每一个组件也有它自己的配置文件。我们同样也支持以dist后缀结束的 配置文件。在项目中如果我们有几个开发人员，我们可以把把 公共设置 放到 `codeception.dist.yml` 文件中，个人设置放入到 `codeception.yml`文件中。这同样适用于其它程序组件配置。比如 `unit.suite.yml` 将会合并 `unit.suite.dist.yml` 文件。
 
-## Running Tests
+## 运行测试脚本
 
-Tests can be started with the `run` command.
+运行下面的命令能开始运行测试脚本。
 
 {% highlight bash %}
 
@@ -216,7 +216,7 @@ $ php codecept.phar run
 
 {% endhighlight %}
 
-With the first argument you can run tests from one suite.
+使用第一个参数能够设置运行哪一个功能组件。
 
 {% highlight bash %}
 
@@ -224,7 +224,7 @@ $ php codecept.phar run acceptance
 
 {% endhighlight %}
 
-To run exactly one test, add a second argument. Provide a local path to the test, from the suite directory.
+运行某一个测试文件，可以从功能组件目录(unit、functional、acceptance)中，设置某一个文件的名称到第二个参数。
 
 {% highlight bash %}
 
@@ -232,7 +232,7 @@ $ php codecept.phar run acceptance SigninCept.php
 
 {% endhighlight %}
 
-Alternatively you can provide the full path to test file:
+或者你可以提供一个绝对的文件路径：
 
 {% highlight bash %}
 
@@ -240,7 +240,7 @@ $ php codecept.phar run tests/acceptance/SigninCept.php
 
 {% endhighlight %}
 
-You can execute one test from a test class (for Cest or Test formats)
+你可以只执行某一个测试类
 
 {% highlight bash %}
 
@@ -248,7 +248,7 @@ $ php codecept.phar run tests/acceptance/SignInCest.php:anonymousLogin
 
 {% endhighlight %}
 
-You can provide a directory path as well:
+你可以提供一个目录地址：
 
 {% highlight bash %}
 
@@ -256,13 +256,13 @@ $ php codecept.phar run tests/acceptance/backend
 
 {% endhighlight %}
 
-This will execute all tests from the backend dir.
+系统会执行该目录下所有的测试。
 
-To execute a group of tests that are not stored in the same directory, you can organize them in [groups](http://codeception.com/docs/07-AdvancedUsage#Groups).
+想要执行不在同一目录中的测试组，你可以阅读[测试组](http://codeception.com/docs/07-AdvancedUsage#Groups)章节查找答案。
 
-### Reports
+### 报表
 
-To generate JUnit XML output, you can provide the `--xml` option, and `--html` for HTML report. 
+如果你想要生成单元测试xml格式报表，可以设置 `--xml` 选项，`--html`会生成 HTML报表。
 
 {% highlight bash %}
 
@@ -270,9 +270,9 @@ $ php codecept.phar run --steps --xml --html
 
 {% endhighlight %}
 
-This command will run all tests for all suites, displaying the steps, and building HTML and XML reports. Reports will be stored in the `tests/_output/` directory.
+这条命令会执行所有的测试程序，显示每一步，并生成HTML和XML格式的报表。报表存储再 `tests/_output/` 目录。
 
-To learn all available options, run the following command:
+运行下面的命令，查看所有有效的选项：
 
 {% highlight bash %}
 
@@ -280,34 +280,33 @@ $ php codecept.phar help run
 
 {% endhighlight %}
 
-## Debugging
+## 调试
 
-To receive detailed output, tests can be executed with the `--debug` option.
-You may print any information inside a test using the `codecept_debug` function.
+想得到更加详细的输出，可以在测试命令后面加上 `--debug` 选项。
+在测试程序中，你可以使用 `codecept_debug` 函数输出任意的信息。
 
-### Generators
+### 生成器
 
-There are plenty of useful Codeception commands:
+大量丰富并且有用的 Codeception 命令如下：
 
-* `generate:cept` *suite* *filename* - Generates a sample Cept scenario
-* `generate:cest` *suite* *filename* - Generates a sample Cest test
-* `generate:test` *suite* *filename* - Generates a sample PHPUnit Test with Codeception hooks
-* `generate:phpunit` *suite* *filename* - Generates a classic PHPUnit Test
-* `generate:suite` *suite* *actor* - Generates a new suite with the given Actor class name
-* `generate:scenarios` *suite* - Generates text files containing scenarios from tests
-* `generate:helper` *filename* - Generates a sample Helper File
-* `generate:pageobject` *suite* *filename* - Generates a sample Page object
-* `generate:stepobject` *suite* *filename* - Generates a sample Step object
-* `generate:environment` *env* - Generates a sample Environment configuration
-* `generate:groupobject` *group* - Generates a sample Group Extension
-
-
-## Conclusion
-
-We took a look into the Codeception structure. Most of the things you need were already generated by the `bootstrap` command. After you have reviewed the basic concepts and configurations, you can start writing your first scenario. 
+* `generate:cept` *suite* *filename* - 生成一个简单的 Cept 场景测试脚本
+* `generate:cest` *suite* *filename* - 生成一个简单的 Cest 测试文件
+* `generate:test` *suite* *filename* - 生成一个简单的PHPUnit 测试脚本
+* `generate:phpunit` *suite* *filename* - 生成一个PHPUnit 测试脚本类
+* `generate:suite` *suite* *actor* - 通过Actor 对象的名称，生成一个新的程序组件
+* `generate:scenarios` *suite* - 生成一个包含场景的文本文件
+* `generate:helper` *filename* - 生成一个简单的帮助文件
+* `generate:pageobject` *suite* *filename* - 生成一个简单的页面（Page）对象
+* `generate:stepobject` *suite* *filename* - 生成一个简单的步骤（Step）对象
+* `generate:environment` *env* - 生成一个简单环境配置文件
+* `generate:groupobject` *group* - 生成一个简单的组扩展
 
 
+## 结束语
+
+我们已经深入的了解了 Codeception的结构。通过引导器命令也生成了大部分需要的文件。回顾学到的基础概念和配置之后，你可以开始编写你的第一个测试脚本了。
 
 
-* **Next Chapter: [AcceptanceTests >](/docs/03-AcceptanceTests)**
-* **Previous Chapter: [< Introduction](/docs/01-Introduction)**
+
+* **下一章: [验收测试 >](/docs/03-AcceptanceTests)**
+* **上一章: [< 介绍](/docs/01-Introduction)**
