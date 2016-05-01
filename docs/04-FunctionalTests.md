@@ -1,17 +1,17 @@
 ---
 layout: doc
-title: 04-FunctionalTests - Codeception - Documentation
+title: 04-功能测试 - Codeception - 中文文档
 ---
 
-# Functional Tests
+# 功能测试 
 
-Now that we've written some acceptance tests, functional tests are almost the same, with just one major difference: functional tests don't require a web server to run tests.
+直到现在，我们已经写了一些验收测试，功能测试跟验收测试区别不大，只有一个不同： 验收测试不需要一个真实的浏览器去运行测试脚本。
 
-In simple terms we set `$_REQUEST`, `$_GET` and `$_POST` variables and then we execute application from a test. This may be valuable as functional tests are faster and provide detailed stack traces on failures.
+在一些情况下，我们在测试脚本中设置 `$_REQUEST`, `$_GET` 和 `$_POST`变量然后执行测试脚本，这些操作对于功能测试是很有价值，它能让测试脚本运行速度更快，并且在脚本出错的时候提供详细的错误信息。
 
-Codeception can connect to different web frameworks which support functional testing: Symfony2, Laravel4, Yii2, Zend Framework and others. You just need to enable desired module in your functional suite config to start.
+Codeception支持为不同的PHP框架提供功能测试，包括以下PHP框架: Symfony2, Laravel4, Yii2, Zend Framework等等。你只需要在你的功能测试配置文件中开启相关的模块就可以进行功能测试。
 
-Modules for all of these frameworks share the same interface, and thus your tests are not bound to any one of them. This is a sample functional test.
+这些模块为支持的PHP框架提供了一些接口，这样你的测试脚本就不需要被束缚在这些框架中。 下面是一个很简单的验收测试脚本：
 
 {% highlight php %}
 
@@ -28,29 +28,25 @@ $I->see('Hello, Miles', 'h1');
 
 {% endhighlight %}
 
-As you see you can use same tests for functional and acceptance testing. 
+正如你看到的，你可以使用相同的测试函数去进行功能测试和验收测试。 
 
-## Pitfalls
+## 缺陷与误区
 
-Acceptance tests are usually much slower than functional tests. But functional tests are less stable as they run Codeception and application in one environment. If your application was not designed to run in long living process, for instance you use `exit` operator or global variables, probably functional tests are not for you. 
+验收测试通常比功能测试要慢很多，但是功能测试不是太稳定。如果你的应用程序不是运行在一个长期存活的进程中，假如你使用了`exit`语句或者全局变量，那么就不太适合使用功能测试了。 
 
-#### Headers, Cookies, Sessions
+#### 请求头, Cookies, Sessions
 
-One of the common issues with functional tests is usage of PHP functions that deal with `headers`, `sessions`, `cookies`.
-As you know, `header` function triggers an error if it is executed more than once for the same header. In functional tests we run application multiple times, thus, we will get lots of trash errors in the result.
+对于功能测试，一个容易产生问题的地方就是测试函数使用了`headers`， `sessions`，`cookies`。大家知道，如果我们为某一个头信息调用多次`header`函数，那它就会报错。在功能测试中，我们会运行多次应用程序，这个时候，系统就会报错。
 
-#### Shared Memory
+#### 共享内存
 
-In functional testing unlike the traditional way, PHP application does not stop after it finished processing a request. 
-As all requests run in one memory container they are not isolated.
-So **if you see that your tests are mysteriously failing when they shouldn't - try to execute a single test.**
-This will check if tests were isolated during run. Because it's really easy to spoil environment as all tests are run in shared memory.
-Keep your memory clean, avoid memory leaks and clean global and static variables.
+功能测试与传统方式不一样，PHP不会在应用程序处理完一个请求后结束结束自己。所有的请求处理程序都运行在一个内存容器中，它们并不是独立的。
+所以 **如果你看到你的测试脚本莫名其妙的运行失败，并没有正常的执行一个单独的测试脚本.**这个时候你就要检查你的测试脚本是否是独立运行的。因为测试脚本都运行在共享内存中，很容易就被破坏运行环境。记住要保证内存干净，避免内存泄露，不要使用全局变量和静态变量。
 
-## Enabling Framework Modules
+## 开启测试框架模块
 
-You have a functional testing suite in `tests/functional` dir.
-To start you need to include one of the framework modules in suite config file: `tests/functional.suite.yml`. Below we provide simplified instructions for setting up functional tests with the most popular PHP frameworks.
+功能测试组件的脚本都放在`tests/functional`目录。
+首先我们需要在组件配置文件中：`tests/functional.suite.yml`配置要开启的测试模块。在下面我们提供了支持大部分PHP框架的配置说明。
 
 ### Symfony2
 
@@ -251,11 +247,11 @@ class Functional extends \Codeception\Module
 
 Check also all available *Public Properties* of used modules to get full access to its data. 
 
-## Error Reporting
+## 错误报表
 
-By default Codeception uses `E_ALL & ~E_STRICT & ~E_DEPRECATED` error reporting level. 
-In functional tests you might want to change this level depending on framework's error policy.
-The error reporting level can be set in the suite configuration file:
+默认Codeception使用`E_ALL & ~E_STRICT & ~E_DEPRECATED` 表示错误等级。 
+在功能测试中你可能想要去更改当前错误等级下依赖的错误策略。
+错误报表等级能在组件配置文件中修改：
     
 {% highlight yaml %}
 
@@ -268,17 +264,15 @@ error_level: "E_ALL & ~E_STRICT & ~E_DEPRECATED"
 
 {% endhighlight %}
 
-`error_level` can be set globally in `codeception.yml` file.
+`error_level` 能设置在 `codeception.yml` 文件中。
 
 
-## Conclusion
+## 结束语
 
-Functional tests are great if you are using powerful frameworks. By using functional tests you can access and manipulate their internal state. 
-This makes your tests shorter and faster. In other cases, if you don't use frameworks there is no practical reason to write functional tests.
-If you are using a framework other than the ones listed here, create a module for it and share it with community.
+功能测试是非常好的东西，特别是你在使用了一个强大的框架的时候。通过使用功能测试你可以链接和篡改它们的内部状态。这样保证你的测试脚本很短并且很快。在其它的情况下，如果你不使用框架那不推荐你并且功能测试，如果你使用了上面没有列表的框架，那推荐你创建一个测试模块，然后分享到社区中去。
 
 
 
 
-* **Next Chapter: [UnitTests >](/docs/05-UnitTests)**
-* **Previous Chapter: [< AcceptanceTests](/docs/03-AcceptanceTests)**
+* **下一章: [单元测试 >](/docs/05-UnitTests)**
+* **上一章: [< 验收测试](/docs/03-AcceptanceTests)**
