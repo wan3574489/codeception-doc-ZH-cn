@@ -1,24 +1,21 @@
 ---
 layout: doc
-title: 05-UnitTests - Codeception - Documentation
+title: 05-单元测试 - Codeception - 中文文档
 ---
 
 
 # Unit Tests
 
-Codeception uses PHPUnit as a backend for running tests. Thus, any PHPUnit test can be added to Codeception test suite and then executed.
-If you ever wrote a PHPUnit test then do it just as you did before. 
-Codeception adds some nice helpers to simplify common tasks.
+Codeception 使用`PHPUnit` 测试框架来运行单元测试脚本。 因此，所有PHPUnit测试脚本都能在Codeception中运行。如果你曾经编写过PHPUnit测试脚本，那你现在可以跟以前一样去编写单元测试脚本。 Codeception添加了一些有用的功能去使普通任务更加简单。
 
-The basics of unit tests are skipped here, instead you will get a basic knowledge of what features Codeception adds to unit tests.
+关于单元测试的基本信息都从这里跳过，相应的我们将会告诉你Codeception为单元测试添加了哪些特性。
 
-__To say it again: you don't need to install PHPUnit to run its tests. Codeception can run them too.__
+__再说一次：你不需要安装PHPUnit同运行单元测试脚本，Codeception能运行它们。__
 
-## Creating Test
+## 创建测试脚本
 
-Codeception have nice generators to simplify test creation.
-You can start with generating a classical PHPUnit test extending `\PHPUnit_Framework_TestCase` class.
-This can be done by this command:
+Codeception拥有一些生成器让你很简单的生成测试脚本。你可以从生成一个传统的、基于 `\PHPUnit_Framework_TestCase`类的单元测试脚本开始。
+使用下面的命令生成：
 
 {% highlight bash %}
 
@@ -26,8 +23,7 @@ $ php codecept.phar generate:phpunit unit Example
 
 {% endhighlight %}
 
-Codeception has its addons to standard unit tests, so let's try them.
-We need another command to create Codeception-powered unit tests.
+Codeception拥有自己的单元测试脚本规范。我们需要另外一个命令去生成以Codeception为驱动的单元测试脚本。
 
 {% highlight bash %}
 
@@ -35,9 +31,9 @@ $ php codecept.phar generate:test unit Example
 
 {% endhighlight %}
 
-Both tests will create a new `ExampleTest` file located in `tests/unit` directory.
+这2个生成的测试脚本文件名称都为`ExampleTest`，存储在`tests/unit` 目录。
 
-A test created by `generate:test` command will look like this:
+由`generate:test` 命令生成的测试脚本跟下面的代码类似：
 
 {% highlight php %}
 
@@ -65,16 +61,16 @@ class ExampleTest extends \Codeception\TestCase\Test
 
 {% endhighlight %}
 
-This class has predefined `_before` and `_after` methods to start with. You can use them to create a tested object before each test, and destroy it afterwards.
+这个类首先预定义了`_before` and `_after` 方法。 你可以在每个测试开始之前使用它们去创建一个测试对象，然后销毁它们。
 
-As you see, unlike in PHPUnit, `setUp` and `tearDown` methods are replaced with their aliases: `_before`, `_after`.
+正如你所见，它们跟PHPUnit不一样， `setUp` 和 `tearDown`方法被替换为： `_before`, `_after`。
 
-The actual `setUp` and `tearDown` were implemented by parent class `\Codeception\TestCase\Test` and set up the UnitTester class to have all the cool actions from Cept-files to be run as a part of unit tests. Just like in acceptance and functional tests you can choose the proper modules for `UnitTester` class in `unit.suite.yml` configuration file.
+真正的`setUp` and `tearDown` 会被父类 `\Codeception\TestCase\Test`实现， and set up the UnitTester class to have all the cool actions from Cept-files to be run as a part of unit tests. Just like in acceptance and functional tests you can choose the proper modules for `UnitTester` class in `unit.suite.yml` configuration file.
 
 
 {% highlight yaml %}
 
-# Codeception Test Suite Configuration
+# Codeception测试组件配置
 
 # suite for unit (internal) tests.
 class_name: UnitTester
@@ -85,9 +81,9 @@ modules:
 
 {% endhighlight %}
 
-### Classical Unit Testing
+### 传统的单元测试
 
-Unit tests in Codeception are written in absolutely the same way as it is done in PHPUnit:
+在Codeception中编写单元测试与PHPUnit一样：
 
 {% highlight php %}
 
@@ -112,9 +108,9 @@ class UserTest extends \Codeception\TestCase\Test
 
 {% endhighlight %}
 
-### BDD Specification Testing
+### BDD规范性测试
 
-When writing tests you should prepare them for constant changes in your application. Tests should be easy to read and maintain. If a specification to your application is changed, your tests should be updated as well. If you don't have a convention inside your team on documenting tests, you will have issues figuring out what tests were affected by introduction of a new feature.
+在为你的应用程序编写测试脚本的时候，你应该时刻准备它们会变化。测试脚本应该易读并且易于维护。如果你的应用程序的功能被修改，那你的测试脚本也要随之修改。 如果If you don't have a convention inside your team on documenting tests, you will have issues figuring out what tests were affected by introduction of a new feature.
 
 That's why it's pretty important not just to cover your application with unit tests, but make unit tests self-explanatory. We do this for scenario-driven acceptance and functional tests, and we should do this for unit and integration tests as well.
 
