@@ -108,13 +108,13 @@ class UserTest extends \Codeception\TestCase\Test
 
 {% endhighlight %}
 
-### BDD规范性测试
+### 行为驱动开发(BDD)测试脚本规范
 
-在为你的应用程序编写测试脚本的时候，你应该时刻准备它们会变化。测试脚本应该易读并且易于维护。如果你的应用程序的功能被修改，那你的测试脚本也要随之修改。 如果If you don't have a convention inside your team on documenting tests, you will have issues figuring out what tests were affected by introduction of a new feature.
+在为你的应用程序编写测试脚本的时候，你应该时刻准备它们会变化。测试脚本应该易读并且易于维护。如果你的应用程序的功能被修改，那你的测试脚本也要随之修改。 如果你的团队没有应用规范，那以后需要修复因为框架更新导致的问题。
 
-That's why it's pretty important not just to cover your application with unit tests, but make unit tests self-explanatory. We do this for scenario-driven acceptance and functional tests, and we should do this for unit and integration tests as well.
+不仅仅为应用程序编写单元测试是很重要的，让单元测试脚本可读性强也很重要。 我们为场景驱动验收测试和功能测试应用规范，也应该为单元测试和聚合测试应用规范。
 
-For this case we have a stand-alone project [Specify](https://github.com/Codeception/Specify) (which is included in phar package) for writing specifications inside unit tests.
+针对这种情况，我们有一个单独的项目[Specify](https://github.com/Codeception/Specify) (可以下载phar包) 去方便编写符合规范的单元测试。
 
 {% highlight php %}
 
@@ -149,11 +149,11 @@ class UserTest extends \Codeception\TestCase\Test
 
 {% endhighlight %}
 
-Using `specify` codeblocks you can describe any piece of test. This makes tests much cleaner and understandable for everyone in your team.
+使用 `specify` 代码块你能描述任意测试代码。 它让测试更加干净，并且让团队成员更容易理解测试代码。
 
-Code inside `specify` blocks is isolated. In the example above any change to `$this->user` (as any other object property), will not be reflected in other code blocks.
+ `specify` 代码块中的代码是独立的。 在上面的例子中对`$this->user` (作为任何其他对象属性)的修改，都不会影响其他的代码块。
 
-Also you may add [Codeception\Verify](https://github.com/Codeception/Verify) for BDD-style assertions. This tiny library adds more readable assertions, which is quite nice, if you are always confused of which argument in `assert` calls is expected and which one is actual.
+同时你也可以添加[Codeception\Verify](https://github.com/Codeception/Verify)方便编写行为驱动类型的断言程序。它是一个微小的库，添加了更多阅读性高的断言函数，运行速度也很快，特别是你一直疑惑哪个参数 if you are always confused of which argument in `assert` calls is expected and which one is actual.
 
 {% highlight php %}
 
